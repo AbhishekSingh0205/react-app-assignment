@@ -1,0 +1,20 @@
+[
+  {
+    "id": "model-1",
+    "name": "Airbus 320 (2 Cols)",
+    "sections": [4, 4],
+    "rows": 20
+  },
+  {
+    "id": "model-2",
+    "name": "Airbus 380 (3 Cols)",
+    "sections": [3, 2, 3],
+    "rows": 30
+  },
+  {
+    "id": "model-3",
+    "name": "Boeing 747 (3 Cols)",
+    "sections": [3, 3, 3],
+    "rows": 40
+  }
+]

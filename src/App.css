@@ -1,0 +1,219 @@
+/* App Container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 2rem;
+}
+
+.plane-selector select {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 250px;
+  margin-left: 10px;
+}
+
+/* Seating Chart */
+.chart-container {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: inline-block; /* Centers the content if text-align center */
+  min-width: 300px;
+}
+
+.cockpit {
+  background: #e0e0e0;
+  color: #666;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border-radius: 50px 50px 0 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row-number {
+  width: 30px;
+  font-weight: bold;
+  color: #888;
+  margin-right: 15px;
+}
+
+.seat-section {
+  display: flex;
+  gap: 6px;
+  margin-right: 25px; /* Aisle width */
+}
+
+.seat-section:last-child {
+  margin-right: 0;
+}
+
+/* Seat Styling */
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  color: #333;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.seat:hover:not(.booked) {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.seat.selected {
+  background-color: #2196f3;
+  color: white;
+  border-color: #1976d2;
+}
+
+.seat.booked {
+  background-color: #bdbdbd;
+  color: #757575;
+  cursor: not-allowed;
+  border-color: #9e9e9e;
+}
+
+/* Tooltip */
+.tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%; /* Position above */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: max-content;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.seat:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Booking Summary */
+.booking-actions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  bottom: 20px;
+}
+
+.booking-summary h3 {
+  margin-top: 0;
+}
+
+.summary-details {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.book-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.book-btn:hover:not(:disabled) {
+  background-color: #43a047;
+}
+
+.book-btn:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  color: #d32f2f;
+  margin-top: 1rem;
+}
+
+/* Dark Mode Support (Basic) */
+@media (prefers-color-scheme: dark) {
+  .chart-container {
+    background: #333;
+  }
+  .cockpit {
+    background: #424242;
+    color: #ccc;
+  }
+  .seat {
+    background-color: #424242;
+    border-color: #616161;
+    color: #eee;
+  }
+  .seat.booked {
+    background-color: #616161;
+    color: #9e9e9e;
+  }
+  .booking-actions {
+    background: #333;
+    color: #eee;
+  }
+  .summary-details p {
+    color: #eee;
+  }
+}
